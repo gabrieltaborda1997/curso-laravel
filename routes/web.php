@@ -50,27 +50,42 @@ Route::get('/login', function(){ //area de login.
     return 'login';
 })->name('login');
 
-Route::middleware(['auth'])->group(function(){ //chama area de login #segurança #autenticação.
+/*Route::middleware([])->group(function(){ //chama area de login #segurança #autenticação.
 
     Route::prefix('admin')->group(function(){ // cria prefixo ex: /admin/....
        
-       
-        Route::get('/dashboard', function(){
-            return 'Home Admin';
-        });
-    
-        Route::get('/financeiro', function(){
-            return 'Financeiro Admin';
-        });
-    
-        Route::get('/produtos', function(){
-            return 'Produtos Admin';
+        Route::namespace('Admin')->group(function (){
 
-        Route::get('/', function(){
-            return 'Admin';
-            
-        });
+            Route::name('admin.')->group(function(){
+
+                Route::get('/dashboard', 'TestController@teste')->name('dashboard');
+    
+                Route::get('/financeiro', 'TestController@teste')->name('financeiro');
+        
+                Route::get('/produtos', 'TestController@teste')->name('produtos');
+    
+                Route::get('/', function(){
+                    return redirect()->route('admin.dashboard');
+                })->name('home');
+            });
+        });    
     });      
-});
+});*/ 
+//-------SIMPLIFICANDO OQUE FOI FEITO ACIMA-------
 
-/*-------CONTROLER-------*/
+Route::group([
+    'middleware' => [],
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+    'name' => 'admin.'
+], function(){
+    Route::get('/dashboard', 'TestController@teste')->name('dashboard');
+    
+    Route::get('/financeiro', 'TestController@teste')->name('financeiro');
+
+    Route::get('/produtos', 'TestController@teste')->name('produtos');
+
+    Route::get('/', function(){
+        return redirect()->route('admin.dashboard');
+    })->name('home');
+});
