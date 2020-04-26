@@ -90,16 +90,18 @@ Route::group([
     })->name('home');
 }); // cmd > php artisan route:list // cmd php artisan route:cache
 
-/*-------Usando Controller-------*/ // aula 16
+/*-------Usando Controller-------*/ // aula 16 /*-------Rotas com Crud-------*/ //aula 18
 
-Route::get('products/{id}', 'ProductController@show')->name('products.show');
-Route::get('products', 'ProductController@index')->name('products.index');
-
-/*-------Rotas com Crud-------*/ //aula 18
-
+/*
+Route::get('products/{id}', 'ProductController@show')->name('products.show'); // Exibindo produto
+Route::get('products', 'ProductController@index')->name('products.index'); // Listagem de produtos
 Route::get('products/create', 'ProductController@create')->name('products.create'); // Criar novo produto
 Route::get('products/{id}/edit', 'ProductController@edit')->name('products.edit'); // Editar produtos
-Route::post('products', 'ProductController@store')->name('products.store'); // criar produtos
-Route::put('products/{id}', 'ProductController@update')->name('products.update');
-Route::delete('products/{id}', 'ProductController@destroy')->name('products.destroy');
+Route::post('products', 'ProductController@store')->name('products.store'); // Criar produtos
+Route::put('products/{id}', 'ProductController@update')->name('products.update'); // Editar produtos
+Route::delete('products/{id}', 'ProductController@destroy')->name('products.destroy'); // Deletando produtos
+*/ 
 
+/*------- Simplificando Rotas Acima -------*/ // aula 19
+
+Route::resource('products', 'ProductController');
