@@ -88,4 +88,9 @@ Route::group([
     Route::get('/', function(){
         return redirect()->route('admin.dashboard');
     })->name('home');
-});
+}); // cmd > php artisan route:list // cmd php artisan route:cache
+
+/*-------Usando Controller-------*/ // aula 16
+
+Route::get('products/{id}', 'ProductController@show')->name('products.show');
+Route::get('products', 'ProductController@index')->name('products.index');
