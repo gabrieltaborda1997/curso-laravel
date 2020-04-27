@@ -1,12 +1,12 @@
 <?php
 /*-------ROTAS-------*/
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function(){
+/*Route::get('/login', function(){
     return view('login');
-});
+});*/
 
 /*-------ROTAS COM PARAMETROS-------*/
 /*Route::get('/categorias/{flag}',function($flag) {
