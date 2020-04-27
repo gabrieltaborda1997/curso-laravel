@@ -21,7 +21,7 @@ class ProductController extends Controller
             'index', 'show'
         ]);
         
-    }
+        }
 
 
     /**

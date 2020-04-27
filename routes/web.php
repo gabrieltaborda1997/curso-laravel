@@ -98,7 +98,7 @@ Route::delete('products/{id}', 'ProductController@destroy')->name('products.dest
 */ 
 
 /*------- Simplificando Rotas Acima -------*/ // aula 19
-Route::get('/login', function(){ //area de login.
+Route::get('/login', function(){ //area de login
     return view('login');
 })->name('login');
 
