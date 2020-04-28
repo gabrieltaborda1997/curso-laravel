@@ -54,7 +54,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd('Cadastrando...');
+       // dd($request->all());
+       // dd($request->only(['name', 'description']));
+       // dd($request->name());
+       // dd($request->input('teste', 'default'));
+       // dd($request->except('_token'));
+       if($request->file('photo')->isValid()){
+        $nameFile = $request->name . '.' . $request->photo->extension();
+        dd($request->file('photo')->storeAs('products', $nameFile)); //Upload de arquivos
+          //dd($request->photo->store('products'));
+
+        }
+
     }
 
     /**
@@ -76,7 +87,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pages.products.edit', compact('id'));
     }
 
     /**
@@ -88,7 +99,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd("Editando produto {$id}");
     }
 
     /**
